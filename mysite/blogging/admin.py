@@ -11,22 +11,13 @@ class CategoryInline(admin.TabularInline):
     # model = Category
     model = Category.posts.through
 
-
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    # fields = ("title", "text", "author", "published_date")
     inlines = [CategoryInline]
-
-
-# admin.site.register(Post, PostAdmin)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     exclude= ("posts",)
-    # fields = ("name", "description")
 
-
-
-# admin.site.register(Category, CategoryAdmin)
 
 
